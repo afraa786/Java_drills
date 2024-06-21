@@ -43,7 +43,7 @@ public class Main {
         System.out.println("enter you income per annum in lakhs: ");
         float tax = 0;
         float income = fareed.nextFloat();
-        if (income > 2.5) {
+        if (income < 2.5) {
             tax = tax + 0;
         }
         else if (income>2.5 && income<=5) {
