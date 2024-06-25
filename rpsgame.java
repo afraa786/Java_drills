@@ -1,6 +1,6 @@
-import java.util.Scanner;
 import java.util.Random;
-public class Main {
+import java.util.Scanner;
+public class rpsgame {
     public static void main(String[] args) {
         int rock = 0;
         int paper = 1;

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Main {
+public class matrix{
     public static void main(String[] args) {
         //print pattern
         /*  int n = 8;
@@ -88,8 +88,7 @@ public class Main {
                     System.out.println(number + " is odd.");
                 }
             }
-
         }
+        
 
-    }
-}
+    
