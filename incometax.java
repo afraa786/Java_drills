@@ -1,14 +1,12 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
-public class Main {
+public class incometax {
     public static void main(String[] args) {
 //       GREATER NUMBER CODE
 //        int a,b,c;
 //        System.out.println("enter the value of a");
 //        Scanner fareed = new Scanner(System.in);
 //        a = fareed.nextInt();
-//        System.out.println("enter value of b");
+//        System.out.println("enteSr value of b");
 //        b = fareed.nextInt();
 //        System.out.println("enter value for c");
 //        c = fareed.nextInt();
@@ -39,24 +37,21 @@ public class Main {
 //            System.out.println("SORRY, you failed");
 //        }
         // TAX calculation as per income
-        Scanner fareed= new Scanner(System.in);
-        System.out.println("enter you income per annum in lakhs: ");
+       Scanner fareed = new Scanner(System.in);
+        System.out.println("Enter your income per annum in lakhs: ");
         float tax = 0;
         float income = fareed.nextFloat();
-        if (income < 2.5) {
-            tax = tax + 0;
+
+        if (income <= 2.5) {
+            tax = 0;
+        } else if (income > 2.5 && income <= 5) {
+            tax = 0.05f * (income - 2.5f);
+        } else if (income > 5 && income <= 10) {
+            tax = 0.05f * (5 - 2.5f) + 0.2f * (income - 5);
+        } else if (income > 10) {
+            tax = 0.05f * (5 - 2.5f) + 0.2f * (10 - 5) + 0.3f * (income - 10);
         }
-        else if (income>2.5 && income<=5) {
-        tax = tax = 0.05f * (income - 2.5f); }
-        else if (income > 5f && income <=10f)
-        {
-            tax = tax = 0.05f * (income - 5f);
-            tax = tax + 0.2f * (5f- 2.5f);
-        }
-       else if (income>10f)
-           tax = tax + 0.05f * (5.0f - 2.5f);
-           tax = tax + 0.2f * (10f - 5f);
-           tax = tax + 0.3f * (income - 10f);
-        System.out.println("THE TOTAL TAX PAID BY THE EMPLOYEE IS:" + tax );
+
+        System.out.println("The total tax paid by the employee is: " + tax+"lacks");
     }
 }

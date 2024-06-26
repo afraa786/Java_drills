@@ -51,7 +51,7 @@
     }
 } */
        // PRINT PATTERN USING RECURSION
-public class Main {
+public class pattern {
     public static void main(String[] args) {
         printPattern(5);
     }

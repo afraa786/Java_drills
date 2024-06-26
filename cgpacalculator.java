@@ -1,6 +1,4 @@
-
-import java.util.Scanner;
-public class Main {
+public class cgpacalculator {
     public static void main(String[] args) {
         // CGPA CALCULATOR
 //       float cology = 38;
