@@ -1,6 +1,9 @@
 interface Mycamera {
     void takesnap();
     void recordvideo();
+    default void resolution () {
+System.out.println("recording in 4k");
+    }
 }
 interface mywifi {
     String [] getnetworks();
