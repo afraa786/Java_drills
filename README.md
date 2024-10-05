@@ -1,3 +1,4 @@
+# Java Programs and Projects
 This repository is a comprehensive collection of Java programs ranging from basic to advanced levels, alongside mini projects utilizing Java Swing and Java UI for building graphical user interfaces (GUIs).
 
 Table of Contents
