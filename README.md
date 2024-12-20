@@ -58,7 +58,7 @@ Brick Breaker: A fun Brick Breaker game developed using Java Swing where players
 
 Getting Started
 
-### To get started with this repository:
+## To get started with this repository:
 
 Clone the repository to your local machine:
 
