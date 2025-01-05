@@ -73,7 +73,7 @@ To run any program:
 
 Open the respective .java file in your IDE.
 
-Compile the file:
+### Compile the file:
 javac filename.java
 
 Run the file:
