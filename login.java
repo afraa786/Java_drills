@@ -8,7 +8,7 @@ public class login extends JFrame implements ActionListener {
     JTextField textFieldName;
     JPasswordField passwordField;
     JButton login, back;
-
+//logic class
     login() {
         setTitle("Login Portal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
