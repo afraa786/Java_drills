@@ -1,10 +1,10 @@
 import java.util.Scanner;
 public class guess {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int MYNUMBER = (int) (Math.random() * 100);
+        Scanner sc = new Scanner(System.in); //object for scanner
+        int MYNUMBER = (int) (Math.random() * 100); //module math.random()
         System.out.println(MYNUMBER);
-
+//do while loop
         do {
             System.out.println("Guess my number:");
             int username = sc.nextInt();
