@@ -1,0 +1,98 @@
+import javax.sound.sampled.*;
+import javax.swing.*;
+import java.awt.*;
+
+public class SwingMusicPlayer extends JFrame {
+
+    private static final float SAMPLE_RATE = 44100;
+    private volatile boolean playing = false;
+    private Thread musicThread;
+    private static final double A = 440.00;
+    private static final double Bb = 466.16;
+    private static final double G = 392.00;
+    private static final double F = 349.23;
+
+    public SwingMusicPlayer() {
+
+        setTitle("Music Player");
+        setSize(400, 250);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        JLabel label = new JLabel("Pop Groove Playing ♫", SwingConstants.CENTER);
+        label.setFont(new Font("Serif", Font.BOLD, 22));
+
+        JButton playBtn = new JButton("▶ Play");
+        JButton stopBtn = new JButton("⏹ Stop");
+
+        playBtn.setFont(new Font("Arial", Font.BOLD, 16));
+        stopBtn.setFont(new Font("Arial", Font.BOLD, 16));
+
+        playBtn.addActionListener(e -> startMusic());
+        stopBtn.addActionListener(e -> stopMusic());
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(playBtn);
+        buttonPanel.add(stopBtn);
+
+        setLayout(new BorderLayout());
+        add(label, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private void startMusic() {
+        if (playing) return;
+
+        playing = true;
+        musicThread = new Thread(() -> {
+            double[] groove = {
+                A, A, Bb, A,
+                A, A, Bb, A,
+                G, G, A, G,
+                F, F, G, F
+            };
+
+            try {
+                while (playing) {
+                    for (double note : groove) {
+                        if (!playing) break;
+                        playNote(note, 220);
+                        Thread.sleep(30);
+                    }
+                }
+            } catch (Exception ignored) {}
+        });
+
+        musicThread.start();
+    }
+
+    private void stopMusic() {
+        playing = false;
+    }
+
+    private void playNote(double freq, int ms) throws Exception {
+
+        AudioFormat format = new AudioFormat(SAMPLE_RATE, 16, 1, true, false);
+        SourceDataLine line = AudioSystem.getSourceDataLine(format);
+        line.open(format);
+        line.start();
+
+        byte[] buffer = new byte[2];
+
+        for (int i = 0; i < ms * SAMPLE_RATE / 1000; i++) {
+            double angle = 2.0 * Math.PI * freq * i / SAMPLE_RATE;
+            short sample = (short) (Math.sin(angle) * 32767);
+            buffer[0] = (byte) sample;
+            buffer[1] = (byte) (sample >> 8);
+            line.write(buffer, 0, 2);
+        }
+
+        line.drain();
+        line.stop();
+        line.close();
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new SwingMusicPlayer().setVisible(true));
+    }
+}
